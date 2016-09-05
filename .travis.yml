@@ -8,4 +8,4 @@ before_script:
 services:
 - docker
 script:
-- opctl run -a GIT_BRANCH=$TRAVIS_BRANCH release
+- opctl run -a GIT_BRANCH=$TRAVIS_BRANCH build
