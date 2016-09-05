@@ -4,5 +4,5 @@ services:
     extends:
       service: node
       file: ../.common/docker-compose.yml
-    entrypoint: node_modules/.bin/jshint lib
+    entrypoint: jshint app/lib
 

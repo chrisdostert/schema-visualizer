@@ -1,0 +1,13 @@
+description: Runs all ops required to release
+name: release
+inputs:
+- name: AWS_ACCESS_KEY_ID
+  description: Access key for AWS
+  isSecure: true
+- name: AWS_SECRET_ACCESS_KEY
+  description: Secret access key for AWS
+  isSecure: true
+run:
+  subOps:
+  - url: build
+  - url: deploy-to-s3

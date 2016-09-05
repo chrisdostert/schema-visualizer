@@ -1,0 +1,9 @@
+{
+  "name": "schema-visualizer",
+  "description": "Visualize opspec schema using D3.js",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "jsonpointer.js": "^0.4.0"
+  }
+}

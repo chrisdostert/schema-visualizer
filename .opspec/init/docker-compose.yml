@@ -4,5 +4,6 @@ services:
     extends:
       service: node
       file: ../.common/docker-compose.yml
+    working_dir: /working_dir/app
     entrypoint: npm install
     network_mode: host

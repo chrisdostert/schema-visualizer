@@ -9,15 +9,15 @@ Visualizer for the schema of [opspec](http://opspec.io/).
 
 # Credits
 
-Originated as a fork of
+Originated from a fork of
 [json-schema-viewer](https://github.com/jlblcc/json-schema-viewer)
 
 # Releases
 
 All releases will be
-[tagged](https://github.com/opspec-io/sdk-golang/tags) and made
+[tagged](https://github.com/opspec-io/schema-visualizer/tags) and made
 available on the
-[releases](https://github.com/opspec-io/sdk-golang/releases) page with
+[releases](https://github.com/opspec-io/schema-visualizer/releases) page with
 links to the corresponding version of the [CHANGELOG.md](CHANGELOG.md)
 doc.
 
