@@ -1,0 +1,17 @@
+{
+  "name": "schema-visualizer",
+  "description": "Visualize opspec schema using D3.js",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "d3": "^3",
+    "jquery.scrollto": "^2.1.2",
+    "jsonpointer.js": "^0.4.0",
+    "tv4": "^1.2.7",
+    "urijs": "^1.18.1"
+  },
+  "devDependencies": {
+    "node-sass": "^3.8.0",
+    "static-server": "^2.0.3"
+  }
+}

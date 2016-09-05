@@ -1,0 +1,7 @@
+name: debug
+description: runs all debug ops
+run:
+  subOps:
+  - url: init
+  - url: compile-sass
+  - url: debug-node

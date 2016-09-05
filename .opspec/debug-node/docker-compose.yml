@@ -1,0 +1,10 @@
+version: "2"
+services:
+  debug-node:
+    extends:
+      service: node
+      file: ../.common/docker-compose.yml
+    entrypoint: node_modules/.bin/static-server --port 9001
+    ports:
+      - "9001:9001"
+

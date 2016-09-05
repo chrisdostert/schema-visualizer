@@ -1,0 +1,11 @@
+version: "2"
+services:
+  working_dir:
+    image: scratch
+    volumes:
+      - ../../:/working_dir
+    working_dir: /working_dir
+  node:
+    build: .
+    extends:
+      service: working_dir

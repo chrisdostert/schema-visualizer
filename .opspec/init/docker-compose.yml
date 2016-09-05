@@ -1,0 +1,8 @@
+version: "2"
+services:
+  init:
+    extends:
+      service: node
+      file: ../.common/docker-compose.yml
+    entrypoint: npm install
+    network_mode: host

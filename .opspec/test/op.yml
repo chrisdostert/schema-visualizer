@@ -1,0 +1,6 @@
+name: test
+description: runs all test ops
+run:
+  subOps:
+  - url: init
+  - url: test-style

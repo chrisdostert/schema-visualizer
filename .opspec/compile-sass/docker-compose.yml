@@ -1,0 +1,7 @@
+version: "2"
+services:
+  compile-sass:
+    extends:
+      service: node
+      file: ../.common/docker-compose.yml
+    entrypoint: node_modules/.bin/node-sass styles/sass/json-schema-viewer.scss styles/json-schema-viewer.css
