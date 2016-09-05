@@ -125,10 +125,6 @@ if (!JSV) {
             $(window).on('throttledresize orientationchange', this.contentHeight);
             $(window).on('resize', this.contentHeight);
 
-            JSV.resizeBtn();
-            $(document).on('pagecontainershow', JSV.resizeBtn);
-            $(window).on('throttledresize', JSV.resizeBtn);
-
             var cb = function () {
                 callback();
 
@@ -243,28 +239,13 @@ if (!JSV) {
          * (Re)set the viewer page height, set the diagram dimensions.
          */
         contentHeight: function () {
-            var screen = $.mobile.getScreenHeight(),
+            var screen = $(window).height(),
                 header = $('.ui-header').hasClass('ui-header-fixed') ? $('.ui-header').outerHeight() - 1 : $('.ui-header').outerHeight(),
                 footer = $('.ui-footer').hasClass('ui-footer-fixed') ? $('.ui-footer').outerHeight() - 1 : $('.ui-footer').outerHeight(),
                 contentCurrent = $('#main-body.ui-content').outerHeight() - $('#main-body.ui-content').height(),
                 content = screen - header - footer - contentCurrent;
 
             $('#main-body.ui-content').css('min-height', content + 'px');
-        },
-
-        /**
-         * Hides navbar button text on smaller window sizes.
-         *
-         * @param {number} minSize The navbar width breakpoint.
-         */
-        resizeBtn: function (minSize) {
-            var bp = typeof minSize === 'number' ? minSize : 800;
-            var activePage = $.mobile.pageContainer.pagecontainer('getActivePage');
-            if ($('.md-navbar', activePage).width() <= bp) {
-                $('.md-navbar .md-flex-btn.ui-btn-icon-left').toggleClass('ui-btn-icon-notext ui-btn-icon-left');
-            } else {
-                $('.md-navbar .md-flex-btn.ui-btn-icon-notext').toggleClass('ui-btn-icon-left ui-btn-icon-notext');
-            }
         },
 
         /**
@@ -319,7 +300,7 @@ if (!JSV) {
             }
 
 
-            JSV.createPre(schema, tv4.getSchema(node.schema), false, node.plainName);
+            JSV.createPre(schema, tv4.getSchema(node.schema), node.plainName);
 
             var example = (!node.example && node.parent && node.parent.example && node.parent.type === 'object' ? node.parent.example : node.example);
 
@@ -332,7 +313,7 @@ if (!JSV) {
                             data = jsonpointer.get(data, pointer);
                         }
 
-                        JSV.createPre(ex, data, false, node.plainName);
+                        JSV.createPre(ex, data, node.plainName);
                         JSV.example = example;
                     }).fail(function () {
                         ex.html('<h3>No example found.</h3>');
@@ -365,18 +346,17 @@ if (!JSV) {
          *
          * @param {object} el jQuery element
          * @param {object} obj The obj to stringify and display
-         * @param {string} title The title for the new window
          * @param {string} exp The string to highlight
          */
-        createPre: function (el, obj, title, exp) {
+        createPre: function (el, obj, exp) {
             var pre = $('<pre><code class="language-json">' + JSON.stringify(obj, null, '  ') + '</code></pre>');
             var btn = $('<a href="#" class="ui-btn ui-mini ui-icon-action ui-btn-icon-right">Open in new window</a>').click(function () {
                 var w = window.open('', 'pre', null, true);
 
                 $(w.document.body).html($('<div>').append(pre.clone().height('95%')).html());
                 hljs.highlightBlock($(w.document.body).children('pre')[0]);
-                $(w.document.body).append('<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">');
-                w.document.title = title || 'JSON Schema Viewer';
+                $(w.document.body).append('<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/default.min.css">');
+                w.document.title = document.title ;
                 w.document.close();
             });
 
@@ -419,8 +399,7 @@ if (!JSV) {
             var uri = new URI(),
                 path = JSV.getNodePath(node).join('-');
 
-            //uri.search({ v: path});
-            uri.hash($.mobile.activePage.attr('id') + '?v=' + path);
+            uri.hash('?v=' + path);
             $('#permalink').html(JSV.compilePath(node));
             $('#sharelink').val(uri.toString());
         },
