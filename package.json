@@ -11,6 +11,7 @@
     "urijs": "^1.18.1"
   },
   "devDependencies": {
+    "jshint": "^2.9.3",
     "node-sass": "^3.8.0",
     "static-server": "^2.0.3"
   }
