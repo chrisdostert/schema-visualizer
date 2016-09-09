@@ -3,7 +3,7 @@
     $('body').one('pagecontainershow', function (event, ui) {
 
         JSV.init({
-            schema: 'http://opspec.io/spec/0.1.2/schema/bundle-manifest.json'
+            schema: 'http://opspec.io/spec/0.1.2/schema/manifest.json'
         }, function () {
             //display schema version
             JSV.setVersion(tv4.getSchema(JSV.treeData.schema).version);
