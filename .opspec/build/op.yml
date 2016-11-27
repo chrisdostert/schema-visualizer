@@ -1,6 +1,7 @@
 name: build
 description: runs all build ops
 run:
-  subOps:
-  - url: test
-  - url: compile-sass
+  serial:
+  - op: clean
+  - op: test
+  - op: compile-sass

@@ -3,12 +3,11 @@ sudo: required
 before_script:
 - sudo apt-get remove --purge docker-engine
 - curl -fsSL https://get.docker.com/ | sh
-- sudo curl -L -o /usr/local/bin/opctl https://github.com/opspec-io/cli/releases/download/0.1.10/opctl-linux-x86_64
-- sudo chmod +x /usr/local/bin/opctl
+- curl -L https://github.com/opspec-io/opctl/releases/download/0.1.14/opctl-linux.tgz | sudo tar -xzv -C /usr/local/bin
 services:
 - docker
 script:
-- opctl run -a GIT_BRANCH=$TRAVIS_BRANCH release
+- opctl run release
 env:
   global:
   - secure: zxncC+fNKPoYSLP4meG2i0e4nAWs89jlfvpqGPWuzK5w3FT4k61MMsWgXAUG+5mVVIkeMCLKhYN98mfOJY9Ia/uigl+lrhXxzb4WWNNzd5RF01iT9nvzMg4LmdOrc9t9s0D0dC/FOY/E1L751gLGKmJtBGcnaT/Hmc2VvYXk0cRNbm+rsXil8gaQM9ZsnVi7oyjesqjxReqx9bbk1+XKCuKNQlRtzOL5vItrjjKo9jrP742ZpIaV0Ptc0pFvUsG0fZXkFU4R7JQTeqMFsC/MFtSyXI8REb0ZnAmgh2/nV8K04h4bOhIzQVg5BA+A/xOpkRCbAiv1OkXmAQNOJ54ctRCrTK6weNpqT54Hmbenp4D17G0S+Q0UPlR/KzL1kyftaMcfNsi9rsrr+2b9y2kZ1ymR8XSFlaaZJnb4bXnL7Zd8Hy1Ni+UVaAn2TtB+9ClyyLfAnelJGB0Kq7Cif0GLk0aNEGH/W4ngeCdNU8SuaXnnYp4FgUvF9lFkCsySmD7zoo0Ucgm9SQ/NvNYWEmy9xM1jhvhbNLjUMJp7In3kdpO8Yo8Zmr07+jfKlTyZ4lnA4mzPVSHs8nwRUcQyQoPAeDnvKNczDzDl5emAvXNd4K7YSeglDa7IdkTvVEZf8RA45QM9YJOYXNB9voqp70f5KS+NyLnrXCtIVkY7P+O9Mpw=
