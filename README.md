@@ -7,6 +7,13 @@ Visualizer for the schema of [opspec](http://opspec.io/).
 > development. Anything may change at any time. The public API should
 > not be considered stable."*
 
+# Usage
+
+Just pass a `schema` query parameter with the URI of the JSON schema you
+would like to visualize
+
+example: http://opspec.io/schema-visualizer/?schema=../spec/0.1.2/schema/manifest.json
+
 # Credits
 
 Originated from a fork of
@@ -17,9 +24,9 @@ Originated from a fork of
 All releases will be
 [tagged](https://github.com/opspec-io/schema-visualizer/tags) and made
 available on the
-[releases](https://github.com/opspec-io/schema-visualizer/releases) page with
-links to the corresponding version of the [CHANGELOG.md](CHANGELOG.md)
-doc.
+[releases](https://github.com/opspec-io/schema-visualizer/releases) page
+with links to the corresponding version of the
+[CHANGELOG.md](CHANGELOG.md) doc.
 
 # Versioning
 
