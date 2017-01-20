@@ -12,8 +12,7 @@ Visualizer for the schema of [opspec](http://opspec.io/).
 Just pass a `schema` query parameter with the URI of the JSON schema you
 would like to visualize
 
-example: http://opspec.io/schema-visualizer/?schema=../spec/0.1.2/schema/manifest.json
-
+example: https://opspec.io/schema-visualizer/?schema=https://spec.opspec.io/0.1.3/schema/manifest.json
 # Credits
 
 Originated from a fork of
