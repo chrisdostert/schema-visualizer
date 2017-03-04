@@ -1,5 +1,5 @@
-name: compile-sass
-description: compiles sass
+name: init
+description: initializes the repo by installing all dependencies
 inputs:
   srcDir:
     dir:
@@ -11,15 +11,7 @@ outputs:
       description: directory containing the projects source code
 run:
   container:
-    cmd:
-      - sh
-      - -ce
-      - |
-        echo "installing deps"
-        npm install -g node-sass --quiet
-
-        echo "compiling sass"
-        node-sass json-schema-viewer.scss json-schema-viewer.css
+    cmd: [ npm, install ]
     dirs:
       /src: srcDir
     image: { ref: 'node:7.6' }
