@@ -1,2 +1,22 @@
 name: test-style
 description: runs style tests
+inputs:
+  srcDir:
+    dir:
+      default: .
+      description: directory containing the projects source code
+run:
+  container:
+    cmd:
+      - sh
+      - -ce
+      - |
+        echo "installing deps"
+        npm install -g jshint --quiet
+
+        echo "running style tests"
+        jshint .
+    dirs:
+      /src: srcDir
+    image: { ref: 'node:7.6' }
+    workDir: /src/app/lib

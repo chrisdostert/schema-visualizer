@@ -1,9 +1,0 @@
-version: "2"
-services:
-  compile-sass:
-    extends:
-      service: node
-      file: ../.common/docker-compose.yml
-    working_dir: /working_dir/app
-    entrypoint: sass json-schema-viewer.scss json-schema-viewer.css
-
