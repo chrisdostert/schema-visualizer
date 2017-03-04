@@ -1,9 +1,20 @@
 description: Runs all ops required to release
 name: release
 inputs:
-  - { name: AWS_ACCESS_KEY_ID, description: Access key for AWS, isSecret: true }
-  - { name: AWS_SECRET_ACCESS_KEY, description: Secret access key for AWS, isSecret: true}
+  awsAccessKeyId:
+    string:
+      constraints: { minLength: 20 }
+      description: access key for AWS
+  awsSecretAccessKey:
+    string:
+      constraints: { minLength: 20 }
+      description: secret access key for AWS
+      isSecret: true
+  srcDir:
+    dir:
+      default: .
+      description: directory containing the projects source code
 run:
   serial:
-  - op: build
-  - op: deploy-to-s3
+    - op: { ref: build, inputs: { srcDir }, outputs: { srcDir } }
+    - op: { ref: deploy-to-s3, inputs: { awsAccessKeyId, awsSecretAccessKey, srcDir }}

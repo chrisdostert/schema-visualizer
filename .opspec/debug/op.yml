@@ -1,7 +1,0 @@
-name: debug
-description: runs all debug ops
-run:
-  serial:
-  - op: init
-  - op: compile-sass
-  - op: debug-node

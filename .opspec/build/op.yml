@@ -1,7 +1,12 @@
 name: build
 description: runs all build ops
+inputs:
+  srcDir:
+    dir:
+      default: .
+      description: directory containing the projects source code
 run:
   serial:
-  - op: clean
-  - op: test
-  - op: compile-sass
+  - op: { ref: clean, inputs: { srcDir }, outputs: { srcDir }}
+  - op: { ref: test, inputs: { srcDir }, outputs: { srcDir }}
+  - op: { ref: compile-sass, inputs: { srcDir } }

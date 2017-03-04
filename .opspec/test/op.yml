@@ -1,6 +1,11 @@
 name: test
 description: runs all test ops
+inputs:
+  srcDir:
+    dir:
+      default: .
+      description: directory containing the projects source code
 run:
   serial:
-  - op: init
-  - op: test-style
+    - op: { ref: install-deps, inputs: { srcDir }, outputs: { srcDir }}
+    - op: { ref: test-style, inputs: { srcDir } }
