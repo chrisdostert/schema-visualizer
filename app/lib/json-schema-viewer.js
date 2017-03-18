@@ -70,7 +70,7 @@ if (!JSV) {
         /**
          * Default maximum depth for recursive schemas
          */
-        maxDepth: 20,
+        maxDepth: 10,
 
         /**
          * @property {object} labels Nodes to render as non-clickable in the tree. They will auto-expand if child nodes are present.
@@ -509,9 +509,10 @@ if (!JSV) {
             if (depth > this.maxDepth) {
                 return;
             }
+
             var key, node,
                 s = schema.$ref ? tv4.getSchema(schema.$ref) : schema,
-                props = s.properties,
+                props = Object.assign({}, s.properties || {}, s.patternProperties || {}),
                 items = s.items,
                 owns = Object.prototype.hasOwnProperty,
                 all = {},
@@ -545,7 +546,7 @@ if (!JSV) {
                 isReal: real,
                 plainName: name,
                 type: s.type,
-                displayType: s.type || (s['enum'] ? 'enum: ' + s['enum'].join(', ') : s.items ? 'array' : s.properties ? 'object' : 'ambiguous'),
+                displayType: s.type || (s['enum'] ? 'enum: ' + s['enum'].join(', ') : s.items ? 'array' : props ? 'object' : 'ambiguous'),
                 translation: schema.translation || s.translation,
                 example: schema.example || s.example,
                 opacity: real ? 1 : 0.5,
