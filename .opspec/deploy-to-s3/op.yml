@@ -25,7 +25,7 @@ run:
             pip install awscli
 
             echo "performing deploy"
-            aws s3 sync . s3://opspec.io/schema-visualizer --delete
+            aws s3 sync . s3://schema-visualizer.opspec.io --delete
         dirs:
           /src: srcDir
         envVars:
