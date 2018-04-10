@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/opspec-io/schema-visualizer.svg?branch=master)](https://travis-ci.org/opspec-io/schema-visualizer)
 
-Visualizer for the schema of [opspec](http://opspec.io/).
+Visualizer for [JSON Schemas](http://json-schema.org/)
 
 > *Be advised: this project is currently at Major version zero. Per the
 > semantic versioning spec: "Major version zero (0.y.z) is for initial
